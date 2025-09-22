@@ -1,0 +1,189 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  </head>
+
+<body>
+    <div class="container-fluid" >
+      <nav class="shadow bg-body-tertiary fixed-top navbar navbar-expand-lg" >
+        <div class="container-fluid" >
+          <a class="navbar-brand" href="#" >Portfolio</a>
+          <button type="button" data-bs-target="#navbarSupportedContent" aria-label="Toggle navigation" class="navbar-toggler" aria-controls="navbarSupportedContent" aria-expanded="false" data-bs-toggle="collapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+            <ul class="mb-2 mb-lg-0 ms-auto navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" href="#" aria-current="page"style="background-color: rgb(255, 136, 0); " >Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#About" style="background-color: rgb(255, 136, 0);">Sobre mi</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#Proyectos" style="background-color: rgb(255, 136, 0);">Proyectos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#Testimonios" style="background-color:rgb(255, 136, 0);">Criticas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#Contacto" style="background-color: rgb(255, 136, 0);">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  
+      <header class="bg-light mb-5">
+        <div class="container px-5">
+          <div class="text-center row align-items-center">
+            <div class="col-xxl-6 col-xl-7">
+              <div class="my-5">
+                <h2 class="text-center fw-bold mb-2">¡Buenas! soy Bruno, tu programador favorito</h2>
+                <h2 class="text-center fw-bold mb-2 text-warning">Date de alta en mis cursos.</h2>
+                <p class="mb-5 lead text-muted">Especializado en todo tipo de desarrollos, Java, Php, Python, C++, XML y CSS.</p>
+                <div class="text-center row">
+                  <div class="col">
+                    <a class="btn btn-warning" href="#">Github</a>
+                  </div>
+                  <div class="col">
+                    <a class="btn btn-dark" href="#">Youtube</a>
+                  </div>
+                  <div class="col">
+                    <a class="btn btn-warning" href="#">X</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-6 align-items-center col-xl-5">
+              <img alt="Yo" class="shadow img-fluid rounded-5" src="images/yo.jpg">
+            </div>
+          </div>
+        </div>
+      </header>
+  
+      <section class="text-center pt-5" id="About">
+        <div class="row my-5">
+          <h2>Sobre mí</h2>
+          <p class="mb-5 lead">Soy un programador web con trayectoria en la creación de aplicaciones tanto para web como para dispositivos móviles.<br>Mi especialidad abarca el diseño y desarrollo de soluciones digitales multiplataforma, empleando las tecnologías y herramientas más actuales. Me destaco por ser una persona altamente productiva, capaz de colaborar en equipo de manera efectiva y de desempeñarme con igual eficiencia trabajando de forma independiente.</p>
+        </div>
+        <div class="row">
+          <div class="mx-auto col-lg-4 mt-5">
+            <i class="text-primary fa-5x fa-brands fa-html5"></i>
+            <h5 class="text-center">HTML & CSS</h5>
+            <p>Desarrollo de páginas Web con HTML & CSS.</p>
+          </div>
+          <div class="mx-auto col-lg-4 mt-5">
+            <i class="text-primary fa-5x fa-brands fa-php"></i>
+            <h5 class="text-center">Php</h5>
+            <p>Prgramación con Php.</p>
+          </div>
+        </div>
+      </section>
+  
+      <section class="text-center pt-5" id="Proyectos">
+        <div class="my-5 container">
+          <h2 class="mb-5">Proyectos</h2>
+          <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="images/1.png" class="d-block w-100" alt="1">
+              </div>
+              <div class="carousel-item">
+                <img src="images/2.png" class="d-block w-100" alt="2">
+              </div>
+              <div class="carousel-item">
+                <img src="images/3.png" class="d-block w-100" alt="3">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </section>
+    
+            <div class="row mx-auto w-75">
+                <div class="mb-3 col-sm-4 mb-sm-0">
+                  <div class="shadow card">
+                    <img alt="lucas" class="card-img-top" src="images/Hero_Mobile_Cuenta_Personas_V1_1_8046e424ea.webp">
+                    <div class="card-body">
+                      <h5 class="card-title">En relacion calidad/precio de los mejores</h5>
+                      <p class="card-text">Buena experiencia</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="shadow card">
+                    <img alt="" class="card-img-top" src="images/769933690_233804291_1024x576.webp">
+                    <div class="card-body">
+                      <h5 class="card-title">Muy buen programador</h5>
+                      <p class="card-text">Es barato</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="shadow card">
+                    <img alt="Tadeo" class="card-img-top" src="images/blog-employee-personas.png">
+                    <div class="card-body">
+                      <h5 class="card-title">Me funciona muy bien la página web que realizó</h5>
+                      <p class="card-text">Tengo bastantes Clientes gracias a su trabajo</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Comentario</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Tengo total experiencia en páginas web <3"></textarea>
+              </div>
+              <footer class="row my-5 border-top py-5 row-cols-1 row-cols-sm-2 row-cols-md-5">
+                <div class="col mb-4">
+                    <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+                        <p class="text-body-secondary me-auto">© Mi pagina web</p>
+                    </a>
+                </div>
+            
+                <div class="col mb-4"></div>
+            
+              
+                <div class="col mb-4 ms-auto">
+                    <h5>Enlaces</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-body-secondary">Home</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#About" class="nav-link p-0 text-body-secondary">Sobre mí</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#Proyectos" class="nav-link p-0 text-body-secondary">Proyectos</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#Testimonios" class="nav-link p-0 text-body-secondary">Criticas</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#Contacto" class="nav-link p-0 text-body-secondary">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+            
+              
+
+              
+              
+</html>
