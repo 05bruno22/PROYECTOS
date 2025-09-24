@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+<title>Simple</title>
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+ <header>
+    <h1>Reclamación de nota</h1>
+ </header>
+
+<form action="http://ncoge.com/phps/formulario.php" method="post">
+
+ 
+ <h2>Contacta con Dirección</h2>
+ 
+ <li class="nombre">
+    
+    <label for="Nombre" class="obligatorio">Nombre:</label>
+    <input type="text" name="Nombre" placeholder="Marcos" autofocus required title="aqui va el nombre" />
+    
+ </li>
+ &nbsp;
+ 
+ <li class="apellidos">
+    <label for="Apellidos" class="obligatorio">Apellidos:</label>
+    <input type="text" name="Apellidos" placeholder="Olmeda Saez" required/>
+ </li>
+ &nbsp;
+
+ <li class="edad">
+    <label for="Edad">Edad:</label>
+    <input type="number" name="Edad" min="17" max="65" value="18" step="1" />
+    </li>
+    &nbsp;
+
+ <li class="telefono">
+    <label for="Telef">Teléfono:</label>
+    <input type="Telef" name="Telef" placeholder="961 543 102" pattern="\d{9}$"/>
+ </li>
+ &nbsp;
+
+ <li class="email">
+    <label for="Email" class="obligatorio">Email académico:</label>
+    <input type="Email" name="Email" placeholder="me@alu.edu.gva.es" required invalid/>
+    </li>
+    &nbsp;
+   
+<li class="categoria">
+    Grado Superior: <br/>
+      <input type="radio" name="Grado Superior" value="ASIR" checked="checked" /> ASIR
+      <input type="radio" name="Grado Superior" value="DAM" /> DAM
+      <input type="radio" name="Grado Superior" value="DAW" /> DAW
+</li>
+&nbsp;
+ <li class="asignatura">
+    <label for="Asignatura">Asignatura:</label>
+    <input type="Asignatura" name="Asignatura" placeholder="Entornos"/>
+ </li>
+ &nbsp;
+ <li class="trimestre">
+    <label for="Trimestre">Trimestre</label>
+    <select id="trimestre" name="Trimestre">
+        <option value="1">1º</option>
+        <option value="2">2º</option>
+        <option value="3">3º</option>
+        
+    </select>
+</li>
+&nbsp;
+ <li class="temario">
+    <label for="Temario">Temario:</label>
+    <input type="Temario" name="Temario" placeholder="Tema 1 y 2"/>
+ </li>
+ &nbsp;
+ <li class="info">
+    <label for="Argumento" class="obligatorio">Argumento:</label>
+    <textarea name="Argumento" cols="40" rows="6" placeholder="En clase da un temario que no sirve para el examen."></textarea>
+ </li>
+ &nbsp;
+ <div class="reset">
+   <input type="reset" name="limpiar" value="Borrar datos del formulario" />
+ </div>
+ &nbsp;
+ <div class="enviar">
+    <button class="submit" type="submit">Enviar</button>
+ </div>
+ 
+ </ul>
+<footer>IES JUAN DE GARAY
+<a href="46012963@edu.gva.es">46012963@edu.gva.es</a>
+</footer>
+</form>
+</body>
+</html>

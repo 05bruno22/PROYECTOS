@@ -1,0 +1,87 @@
+*{
+    text-align: center;
+    list-style-type: none;
+}
+h2{
+    border-bottom: solid 10px greenyellow;
+}
+header{
+    background-color: rgb(247, 0, 255);
+    border-left: 20px solid rgb(241, 24, 107);
+}
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #bebebe;
+}
+.formulario .obligatorio:after {
+    content: " *";
+    color: red;
+ }
+
+.nombre :focus{
+    color:rgb(255, 6, 6);
+}
+.apellidos :focus{
+    color:rgb(255, 6, 6);
+}
+.reset input{
+    background-color: rgb(247, 32, 104);   
+    color:white; 
+}
+.email :focus{
+    color:rgb(255, 6, 6);
+}
+.enviar button{
+   background-color: rgb(40, 122, 54);
+   color:white
+}
+footer{
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    margin-bottom: 2%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgb(2, 24, 24);
+    color: white;
+}
+footer a {
+    color: rgb(47, 255, 220);
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+    color:rgb(14, 235, 50);
+}
+@media all and (max-width: 700px) {
+    header{
+        color:white;
+        background-color: rgb(13, 9, 224);
+        border-left: 20px solid rgb(248, 244, 9);
+    }
+    .reset input{
+        background-color: rgb(247, 197, 32);   
+        color:rgb(0, 0, 0); 
+    }
+    .enviar button{
+        background-color: rgb(16, 224, 252);
+        color:rgb(0, 0, 0)
+     }
+     footer{
+        background-color: blueviolet;
+        position: fixed;
+        width: auto;
+     }
+     footer a:hover {
+        text-decoration: underline;
+        color:rgb(18, 14, 235);
+    }
+}
+
+
+
+
+
+
