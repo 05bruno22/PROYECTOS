@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valenbisi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f7fafd;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            margin: 32px 0 16px 0;
+            color: #1976d2;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            width: 95%;
+            margin: 0 auto;
+            padding: 0 16px 32px 16px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        button#getStations {
+            width: 100%;
+            max-width: 400px;
+            font-size: 1.2em;
+            padding: 18px 0;
+            background: linear-gradient(90deg, #1976d2 60%, #42a5f5 100%);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(25, 118, 210, 0.08);
+            transition: background 0.2s, transform 0.1s;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        button#getStations:hover {
+            background: linear-gradient(90deg, #125ea2 60%, #1976d2 100%);
+            transform: translateY(-2px) scale(1.02);
+        }
+        .flex-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        #results {
+            background: #fff;
+            border: 1px solid black;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgb(40, 51, 61);
+            padding: 20px;
+            overflow: auto;
+            height: 80vh;
+            max-height: 90vh;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1em;
+        }
+        thead th {
+            position: sticky;
+            top: 0;
+            background: #1976d2;
+            color: #fff;
+            font-weight: 700;
+            z-index: 2;
+        }
+        th, td {
+            padding: 12px 8px;
+            text-align: left;
+        }
+        tr:nth-child(even) {
+            background-color: #f4f8fb;
+        }
+        tr:nth-child(odd) {
+            background-color: #e3eefa;
+        }
+        #map {
+            width: 100%;
+            height: 400px;
+            border-radius: 12px;
+            border: 1px solid black;
+            box-shadow: 0 2px 12px rgb(21, 26, 31);
+            margin: 0 auto;
+        }
+        @media (min-width: 900px) {
+            .flex-content {
+                flex-direction: row;
+                gap: 32px;
+            }
+            #results, #map {
+                width: 50%;
+                min-width: 0;
+            }
+            #map {
+                height: 500px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <h1>ValenBisi</h1>
+    <div class="main-container">
+        <div class="button-container">
+            <button id="getStations">Obtener estaciones</button>
+        </div>
+        <div class="flex-content">
+            <div id="results"></div>
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <script>
+        let map = null;
+        let results = document.getElementById('results');
+        const url = "https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets/valenbisi-disponibilitat-valenbisi-dsiponibilidad/records?limit=100";
+
+        let getStationsButton = document.getElementById('getStations');
+        getStationsButton.addEventListener('click', getStations);
+
+        function showData(cadena){
+            results.innerHTML += cadena;
+            console.log(cadena);
+        }
+
+        function getStations() {
+    console.log("Cargando estaciones...");
+    results.innerHTML = ""; // ← Limpia la tabla anterior
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        let tabla = `
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dirección</th>
+                        <th>Número</th>
+                        <th>Abierto</th>
+                        <th>Disponibles</th>
+                        <th>Libres</th>
+                        <th>Total</th>
+                        <th>Actualizado</th>
+                        <th>Coordenadas</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        data.results.forEach(estacion => {
+            tabla += `
+                <tr>
+                    <td>${estacion.address}</td>
+                    <td>${estacion.number}</td>
+                    <td>${estacion.open}</td>
+                    <td>${estacion.available}</td>
+                    <td>${estacion.free}</td>
+                    <td>${estacion.total}</td>
+                    <td>${estacion.updated_at}</td>
+                    <td>Lon(${estacion.geo_point_2d.lon.toFixed(6)})<br>Lat(${estacion.geo_point_2d.lat.toFixed(6)})</td>
+                </tr>
+            `;
+        });
+
+        tabla += `
+                </tbody>
+            </table>
+        `;
+        results.innerHTML = tabla;
+        loadMap(data);
+    })
+    .catch(error => {
+        console.error("Error al obtener estaciones:", error);
+        results.innerHTML = "<p>Error al obtener estaciones.</p>";
+    });
+}
+
+
+        function convertToGeoJSON(datosOriginales) {
+            return {
+                type: "FeatureCollection",
+                features: datosOriginales.results.map(item => ({
+                    type: "Feature",
+                    geometry: {
+                        type: "Point",
+                        coordinates: [
+                            item.geo_point_2d.lon, 
+                            item.geo_point_2d.lat
+                        ]
+                    },
+                    properties: {
+                        id: item.number,
+                        direccion: item.address,
+                        disponibles: item.available,
+                        libres: item.free,
+                        total: item.total,
+                        actualizado: item.updated_at,
+                        estado: item.open === "T" ? "Abierto" : "Cerrado",
+                        necesita_ticket: item.ticket === "T"
+                    }
+                }))
+            };
+        }
+
+        function loadMap(json){
+            const geoJSONResultado = convertToGeoJSON(json);
+            let inicioLon = geoJSONResultado.features[0].geometry.coordinates[0];
+            let inicioLat = geoJSONResultado.features[0].geometry.coordinates[1];
+
+            if (map !== null) {
+                map.remove();
+                map = null;
+            }
+            map = L.map('map').setView([inicioLat, inicioLon], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            L.geoJSON(geoJSONResultado, {
+                pointToLayer: (feature, latlng) => {
+                    return L.circleMarker(latlng, {
+                        radius: 6,
+                        color: feature.properties.disponibles > 0 ? 'green' : 'red',
+                        weight: 1,
+                        fillOpacity: 0.8
+                    });
+                },
+                onEachFeature: (feature, layer) => {
+                    const props = feature.properties;
+                    const contenidoPopup = `
+                        <div class="popup-content">
+                            <h4>${props.direccion}</h4>
+                            <ul>
+                                <li>🆔 ID: <strong>${props.id}</strong></li>
+                                <li>📅 Actualizado: ${props.actualizado}</li>
+                                <li>🟢 Disponibles: ${props.disponibles}</li>
+                                <li>🆓 Libres: ${props.libres}</li>
+                                <li>🧮 Total: ${props.total}</li>
+                                <li>🚲 Estado: ${props.estado}</li>                            
+                            </ul>
+                        </div>
+                    `;
+                    layer.bindPopup(contenidoPopup, {
+                        maxWidth: 300,
+                        className: 'custom-popup'
+                    });
+                }
+            }).addTo(map);
+        }
+
+        getStations();
+        setInterval(getStations, 30000);
+    </script>
+</body>
+</html>
+
