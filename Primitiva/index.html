@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>¡¡Primitiveitor 3000!!</title>
+    </head>
+    <body>
+        <h1>¡¡Primitiveitor 3000!!</h1>
+        <p>Numeros: <span id="numeros"></span></p>
+        <button onclick="generarNum()">Give more seymour</button>
+    
+        <script>
+            function generarNum() {
+                let numeros = [];
+    
+                while (numeros.length < 6) {
+                    let num = Math.floor(Math.random() * 49) + 1;
+                    if (!numeros.includes(num)) {
+                        numeros.push(num);
+                    }
+                }
+    
+                numeros.sort((a, b) => a - b);
+    
+                document.getElementById("numeros").textContent = numeros.join(", ");
+            }
+    
+            
+            generarNum();
+        </script>
+    </body>
+</html>
