@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Password 3000!</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input[type="range"] { width: 300px; }
+    .password-box { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Password 3000!</h1>
+  <label for="longitud">longitud: </label>
+  <input type="range" id="longitud" min="8" max="50" value="8" oninput="updateLength(this.value)">
+  <span id="valor">8</span>
+  
+  <div class="password-box">
+    Password: <span id="password"></span>
+  </div>
+  
+  <button onclick="generarPassword()">Dame Password</button>
+
+  <script>
+    let caracteres = "abcdefghijklmnopqrstuvwxyz";
+    let caracteresMayusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let caracteresNumeros = "0123456789";
+    let caracteresEspeciales = "!@#$%^&*()_+|~`-={}[]:;'<>?,./";
+
+    function numeroAleatorio(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function updateLength(val) {
+      document.getElementById("valor").textContent = val;
+    }
+
+    function obtenerCaracterAleatorio(cadena) {
+      return cadena.charAt(Math.floor(Math.random() * cadena.length));
+    }
+
+    function generarPassword() {
+      let longitud = parseInt(document.getElementById("longitud").value);
+      let passwordArray = [];
+
+      
+      passwordArray.push(obtenerCaracterAleatorio(caracteresMayusculas));
+
+      
+      let cantidadNumeros = numeroAleatorio(1, 2);
+      for (let i = 0; i < cantidadNumeros; i++) {
+        passwordArray.push(obtenerCaracterAleatorio(caracteresNumeros));
+      }
+
+      
+      let cantidadEspeciales = numeroAleatorio(1, 2);
+      for (let i = 0; i < cantidadEspeciales; i++) {
+        passwordArray.push(obtenerCaracterAleatorio(caracteresEspeciales));
+      }
+
+      
+      let restantes = longitud - passwordArray.length;
+      let todosCaracteres = caracteres + caracteresMayusculas + caracteresNumeros + caracteresEspeciales;
+      for (let i = 0; i < restantes; i++) {
+        passwordArray.push(obtenerCaracterAleatorio(todosCaracteres));
+      }
+
+      
+      let password = passwordArray.sort(() => Math.random() - 0.5).join('');
+      document.getElementById("password").textContent = password;
+    }
+  </script>
+</body>
+</html>
