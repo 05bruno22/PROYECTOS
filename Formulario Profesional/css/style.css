@@ -1,0 +1,116 @@
+body { /* cuerpo */
+    font-family: 'Arial', sans-serif;
+    margin: 0; /* margen derecha e izquierda */
+    background: #f3f3f3; /* color del fondo */
+}
+
+header { /* cabezero */
+    background: #333; /* color del cabezero */
+    color: white; /* color del título*/
+    text-align: center; /* centrar titulo y descripción */
+    padding:  10px ; /* tamaño del cabezero*/
+    margin-bottom: 10px; /* distancia entre el cabecero y el cuerpo */
+}
+
+header h1 {
+    font-size: 40px; /* tamaño del título */
+    margin-bottom: 50px; /* distancia entre el título y la descripción */
+}
+
+header p {
+    font-size: 20px; /* tamaño de la descripción */
+    color: #ffffff; /* color de la descripción */
+}
+
+/* Formulario */
+main {
+    display:flex; /* flex para poder centrarlo */
+    justify-content: center; /* posicionar formulario en el centro */
+    padding: 10px; /* distancia entre el formulario y el cabezero */
+}
+
+.formulario {
+    background: white; /* color del fondo del formulario */
+    padding: 30px; /* margen de las letras con el borde */
+    border-radius: 10px; /* redondear bordes del formulario */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);/* sombra de los bordes */
+    max-width: 600px; /* ancho del formulario*/
+    width: 100%;
+}
+
+.formulario h2 {
+    font-size: 25px; /* tamaño del titulo del formulario */
+    margin-bottom: 25px; /* margen entre el titulo y nombre*/
+    color: #555; /* color del título del formulario*/
+    border-bottom: 2px solid #007bff; /* color linea separa titulo y nombre*/
+    padding-bottom: 10px; /* distancia entre titulo y linea*/
+}
+
+.campo {
+    margin-bottom: 15px; /* distancia entre las cajas y los títulos */
+}
+
+.campo label {
+    display: block; /* distancia entre los títulos y las cajas */
+    font-weight: bold; /* títulos en negrita */
+    margin-bottom: 10px; /* margen entre titulo de apartados y cajas de texto */
+    color: #444; /* color titulos de apartados */
+}
+
+.campo input, /* forma de caja de todas menos descripción */
+.campo select, /* forma a la caja de tipo de reclamación */
+.campo textarea {
+    width: 100%; /* tamaño de las cajas de texto */
+    padding: 15px; /* ancho de las cajas de texto */
+    border: 1px solid #ddd; /* grosor y color de los bordes de cajas de texto */
+    border-radius: 5px; /* bordes de cajas de texto */
+    font-size: 15px; /* tamaño letras de cajas de texto */
+    box-sizing: border-box; /* hace que las cajas tengan la misma longitud */
+}
+
+/* brubad esta parte de campos no tengo ni zorra de para que sirve*/
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: #000000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+
+textarea {
+    resize: none;
+    height: 120px; /* tamaño caja descripción del problema*/
+}
+
+/* Botón */
+.boton {
+    text-align: center; /* centrar botón de enviar */
+}
+
+.boton button {
+    background: #007bff; /* color del botón */
+    color: white; /* color letras botón */
+    border: none; /* boton sin borde */
+    padding: 13px 13px; /* marge vertial y horinzotal del texto */
+    border-radius: 5px; /* bordes del botó */
+    font-size: 17px; /* tamaño letra botón */
+    cursor: pointer; /* cambio puntero del ratón al enviar */
+}
+
+.boton button:hover {
+    background: #ff002b; /* color caja cuando pones ratón encima */
+}
+
+/* Footer */
+footer {
+    text-align: center; /* alinear texto de pie de págia */
+    padding: 20px; /* grosor de pie de página */
+    background: #333; /* color de fondo del pie de página */
+    color: white; /* color de letra */
+    margin-top: 20px; /* margen de pie de página con formulario */
+}
+
+footer p {
+    margin: 0; /* tamaño del pie de página */
+}
